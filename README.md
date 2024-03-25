@@ -1,11 +1,21 @@
-# Restaurant Ordering App – Group Project
-The starter files for building [the Restaurant Ordering App](https://scrimba.com/scrim/co72e499baf5f48346e5975cf?pl=p5PpdAw) as a group project.  
+# co53b45b18ed4d6cf3b3a68cc
 
-<img width="298" alt="Screen Shot 2023-02-27 at 1 24 45 PM" src="https://user-images.githubusercontent.com/1447850/221650890-e118b02e-b570-4b04-9cd8-c8973e2e826a.png">
+Quick start:
 
-## Instructions
-Review instructions, resources, and assets for this group project [here](https://scrimba.com/links/restaurant-app-group-prj).
+```
+$ npm install
+$ npm start
+````
 
-## Resources
-- [Scrimba "Branching and Pull Requests" course](https://scrimba.com/learn/frontend/introduction-to-branching-and-pull-requests-co182451185db35ddb1d63195)
-- [Restaurant App Figma design file](https://scrimba.com/links/solo-project-restaurant-menu-figma)
+Head over to https://vitejs.dev/ to learn more about using vite
+## About Scrimba
+
+At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
+If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding, regardless of where they live and the size of their wallets 🎉
+The Frontend Developer Career Path aims to teach you everything you need to become a Junior Developer, or you could take a deep-dive with one of our advanced courses 🚀
+
+- [Our courses](https://scrimba.com/allcourses)
+- [The Frontend Career Path](https://scrimba.com/learn/frontend)
+- [Become a Scrimba Pro member](https://scrimba.com/pricing)
+
+Happy Coding!
