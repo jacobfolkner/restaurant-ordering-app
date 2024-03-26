@@ -1,4 +1,4 @@
-import { menuArray } from "./data";
+import { menuArray } from "./data.js";
 
 document.addEventListener("click", function (e) {
   if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
@@ -17,7 +17,7 @@ function handleAddItem(id) {
               <p class="remove-item">(remove)</p>
         </div>`;
   total += item.price;
-  document.getElementById("total-price").innerText = total;
+  document.getElementById("total-price").innerText = `$${total}`;
 }
 
 const menuItems = menuArray
