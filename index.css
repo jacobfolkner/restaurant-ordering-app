@@ -153,19 +153,54 @@ main {
     justify-self: flex-end;
 }
 
-#complete-order-btn {
+#complete-order-btn, #pay-btn {
     display: block;
-    width: 100%;
+    width: 90%;
     max-width: 500px;
     background-color: var(--clr-accent);
     border: none;
     padding: 1rem 0;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #fff;
     margin: 1rem auto;
     font-weight: 700;
+    font-family: 'Verdana', sans-serif;
 }
 
-#complete-order-btn:hover {
+#complete-order-btn:hover, #pay-btn:hover {
     background-color: var(--clr-dark-accent);
+}
+
+#checkout-modal {
+    background-color: #fff;
+    box-shadow: 0px 0px 100px 1px #000000;
+    width: 90%;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+}
+
+.hidden {
+    display: none;
+}
+
+#checkout-modal input {
+    display: block;
+    font-family: 'Verdana', sans-serif;
+    padding: 15px;
+    width: 90%;
+    margin: 1.15em auto;
+    font-size: 1.5em;
+}
+
+#checkout-modal input:last-of-type {
+    margin: 1.15em auto 2.5rem auto;
+}
+
+#checkout-modal h4 {
+    text-align: center;
+    width: 100%;
+    font-family: 'Verdana', sans-serif;
+    font-size: 1.3rem;
+    margin: 2rem auto;
 }
