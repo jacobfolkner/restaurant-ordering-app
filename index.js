@@ -39,20 +39,19 @@ const menuItems = menuArray
 
 document.getElementById("menu").innerHTML = menuItems;
 
-
 // Kept all the new code at the bottom so it's easy to read; can reorganize later
 // Temporary: the modal can be closed by clicking payBtn
-const completeOrderBtn = document.getElementById("complete-order-btn")
-const checkoutModal = document.getElementById("checkout-modal")
-const payBtn = document.getElementById("pay-btn")
+const completeOrderBtn = document.getElementById("complete-order-btn");
+const checkoutModal = document.getElementById("checkout-modal");
+const payBtn = document.getElementById("pay-btn");
 
-completeOrderBtn.addEventListener("click", openModal)
-payBtn.addEventListener("click", closeModal)
+completeOrderBtn.addEventListener("click", openModal);
+payBtn.addEventListener("click", closeModal);
 
 function openModal() {
-  checkoutModal.classList.remove("hidden")
+  checkoutModal.classList.remove("hidden");
 }
 
 function closeModal() {
-  checkoutModal.classList.add("hidden")
+  checkoutModal.classList.add("hidden");
 }
