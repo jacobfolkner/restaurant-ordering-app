@@ -54,4 +54,7 @@ function openModal() {
 
 function closeModal() {
   checkoutModal.classList.add("hidden");
+  document.getElementById("order-items").innerHTML = ``;
+  total = 0;
+  document.getElementById("total-price").innerText = `$${total}`;
 }
