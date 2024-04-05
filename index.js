@@ -1,24 +1,11 @@
+// IMPORT ----------------------------------------------
 import { menuArray } from "./data.js";
 
-document.addEventListener("click", function (e) {
-  if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
-    handleAddItem(e.target.dataset.id);
-  }
-});
 
-let total = 0;
-
-function handleAddItem(id) {
-  const item = menuArray.find((item) => item.id == id);
-  document.getElementById("order-items").innerHTML += `
-        <div class="order-item">
-              <p class="item-name">${item.name}</p>
-              <p class="item-price">$${item.price}</p>
-              <p class="remove-item">(remove)</p>
-        </div>`;
-  total += item.price;
-  document.getElementById("total-price").innerText = `$${total}`;
-}
+// ELEMENTS ----------------------------------------------
+const completeOrderBtn = document.getElementById("complete-order-btn");
+const checkoutModal = document.getElementById("checkout-modal");
+const payBtn = document.getElementById("pay-btn");
 
 const menuItems = menuArray
   .map(function (item) {
@@ -39,14 +26,36 @@ const menuItems = menuArray
 
 document.getElementById("menu").innerHTML = menuItems;
 
-// Kept all the new code at the bottom so it's easy to read; can reorganize later
-// Temporary: the modal can be closed by clicking payBtn
-const completeOrderBtn = document.getElementById("complete-order-btn");
-const checkoutModal = document.getElementById("checkout-modal");
-const payBtn = document.getElementById("pay-btn");
+
+// GLOBAL VARIABLES ----------------------------------------------
+let total = 0;
+
+
+// EVENTS ----------------------------------------------
+document.addEventListener("click", function (e) {
+  if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
+    handleAddItem(e.target.dataset.id);
+  }
+});
 
 completeOrderBtn.addEventListener("click", openModal);
-payBtn.addEventListener("click", closeModal);
+
+payBtn.addEventListener("click", closeModal); // Temporary: the modal can be closed by clicking payBtn
+
+
+
+// FUNCTIONS ----------------------------------------------
+function handleAddItem(id) {
+  const item = menuArray.find((item) => item.id == id);
+  document.getElementById("order-items").innerHTML += `
+        <div class="order-item">
+              <p class="item-name">${item.name}</p>
+              <p class="item-price">$${item.price}</p>
+              <p class="remove-item">(remove)</p>
+        </div>`;
+  total += item.price;
+  document.getElementById("total-price").innerText = `$${total}`;
+}
 
 function openModal() {
   checkoutModal.classList.remove("hidden");
