@@ -24,15 +24,18 @@ const menuItems = menuArray
   .map(function (item) {
     return `
     <div class="menu-item" id="${item.id}" >
-        <p class="emoji">${item.emoji}</p>
+        <img class="item-img" src="${item.image}">
         <div class="menu-text">
             <h3>${item.name}</h3>
             <p class="ingredients">${item.ingredients.join(", ")}</p>
             <p class="price">$${item.price}</p>
         </div>
-            <button class="add-item-btn" 
-                aria-label="add item to order" 
-                data-id="${item.id}">+</button>
+        <button 
+          class="add-item-btn" 
+          aria-label="add item to order" 
+          data-id="${item.id}">
+          +
+        </button>
     </div>`;
   })
   .join("");
