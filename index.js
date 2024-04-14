@@ -108,8 +108,9 @@ function renderOrder() {
           }).join('')
       
           document.getElementById("order-items").innerHTML = `
-                                  <div id="order">
-                                    <div>${orderItems}</div>
+                                  <div>
+                                    ${orderItems}
+                                  </div>
                               `
       total = orderPrice;
       document.getElementById("total-price").innerText = `$${total}`;
