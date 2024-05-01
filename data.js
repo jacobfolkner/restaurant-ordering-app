@@ -1,31 +1,35 @@
 export const menuArray = [
-  {
-    name: "Pizza",
-    ingredients: ["pepperoni", "mushrom", "mozarella"],
-    id: 0,
-    price: 14,
-    emoji: "🍕",
-  },
-  {
-    name: "Hamburger",
-    ingredients: ["beef", "cheese", "lettuce"],
-    price: 12,
-    emoji: "🍔",
-    id: 1,
-  },
-  {
-    name: "Beer",
-    ingredients: ["grain, hops, yeast, water"],
-    price: 12,
-    emoji: "🍺",
-    id: 2,
-  },
+  // {
+  //   name: "Pizza",
+  //   ingredients: ["pepperoni", "mushrom", "mozarella"],
+  //   id: 0,
+  //   price: 14,
+  //   emoji: "🍕",
+  // },
+  // {
+  //   name: "Hamburger",
+  //   ingredients: ["beef", "cheese", "lettuce"],
+  //   price: 12,
+  //   emoji: "🍔",
+  //   id: 1,
+  //   image: "/images/burger.jpg"
+
+  // },
+  // {
+  //   name: "Beer",
+  //   ingredients: ["grain, hops, yeast, water"],
+  //   price: 12,
+  //   emoji: "🍺",
+  //   id: 2,
+  // },
   {
     name: "Giant Tenderloin",
     ingredients: ["pork", "bun", "pickles"],
     price: 15,
     emoji: "🥪",
     id: 3,
+    image: "/images/giant-tenderloin.jpg"
+
   },
   {
     name: "Half a Giant Tenderloin",
@@ -33,6 +37,8 @@ export const menuArray = [
     price: 8,
     emoji: "🥪",
     id: 4,
+    image: "/images/giant-tenderloin.jpg"
+
   },
   {
     name: "Breaded Cheeseburger",
@@ -40,6 +46,8 @@ export const menuArray = [
     price: 10,
     emoji: "🍔",
     id: 5,
+    image: "/images/burger.jpg"
+
   },
   {
     name: "Chicken Strips",
@@ -47,6 +55,8 @@ export const menuArray = [
     price: 10,
     emoji: "🍗",
     id: 6,
+    image: "/images/chicken-tenders.jpg"
+
   },
   {
     name: "Hot Dog",
@@ -54,6 +64,8 @@ export const menuArray = [
     price: 5,
     emoji: "🌭",
     id: 7,
+    image: "/images/hot-dog.jpg"
+
   },
   {
     name: "Corn Dog",
@@ -61,6 +73,8 @@ export const menuArray = [
     price: 5,
     emoji: "🌽",
     id: 8,
+    image: "/images/corn-dog.jpg"
+
   },
   {
     name: "French Fries",
@@ -68,6 +82,8 @@ export const menuArray = [
     price: 5,
     emoji: "🍟",
     id: 9,
+    image: "/images/fries.jpg"
+
   },
   {
     name: "Pepsi",
@@ -75,6 +91,8 @@ export const menuArray = [
     price: 3,
     emoji: "🥤",
     id: 10,
+    image: "/images/pepsi.jpg"
+
   },
   {
     name: "Diet Pepsi",
@@ -82,6 +100,8 @@ export const menuArray = [
     price: 3,
     emoji: "🥤",
     id: 11,
+    image: "/images/diet-pepsi.png"
+
   },
   {
     name: "Dr. Pepper",
@@ -89,6 +109,8 @@ export const menuArray = [
     price: 3,
     emoji: "🥤",
     id: 12,
+    image: "/images/dr-pepper.webp"
+
   },
   {
     name: "Mountain Dew",
@@ -96,6 +118,8 @@ export const menuArray = [
     price: 3,
     emoji: "🥤",
     id: 13,
+    image: "/images/mtn-dew.webp"
+
   },
   {
     name: "Starry",
@@ -103,5 +127,7 @@ export const menuArray = [
     price: 3,
     emoji: "🥤",
     id: 14,
+    image: "/images/starry.png"
+
   },
 ];
