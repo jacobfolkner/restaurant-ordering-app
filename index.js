@@ -1,4 +1,4 @@
-// IMPORT ---------------------------------------------------------
+// IMPORT ----------------------------------------------------------
 import { menuArray } from "./data.js";
 
 
@@ -8,7 +8,7 @@ const checkoutModal = document.getElementById("checkout-modal");
 const payBtn = document.getElementById("pay-btn");
 
 
-// RENDER HTML ------------------------------------------------------
+// RENDER HTML -----------------------------------------------------
 const menuItems = menuArray
   .map(function (item) {
     return `
@@ -32,12 +32,12 @@ const menuItems = menuArray
 document.getElementById("menu").innerHTML = menuItems;
 
 
-// GLOBAL VARIABLES ---------------------------------------------------
+// GLOBAL VARIABLES ------------------------------------------------
 let orderArray = []
 let total = 0;
 
 
-// EVENTS -------------------------------------------------------------
+// EVENTS ----------------------------------------------------------
 document.addEventListener("click", function (e) {
   if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
     handleAddItem(e.target.dataset.id);
@@ -52,7 +52,7 @@ completeOrderBtn.addEventListener("click", openModal);
 payBtn.addEventListener("click", closeModal); // Temporary: the modal can be closed by clicking payBtn
 
 
-// FUNCTIONS -----------------------------------------------------------
+// FUNCTIONS -------------------------------------------------------
 function handleAddItem(id) {
   // Convert menuArray object.id to number
   const idNumber = parseInt(id, 10);
@@ -112,27 +112,26 @@ function renderOrder() {
                               `
       total = orderPrice;
       document.getElementById("total-price").innerText = `$${total}`;
+}
+
+function removeOrderItem(removeOrderItemID) {
+  // Find the clicked menu item by id
+  const itemToRemove = orderArray.find(item => item.orderItemID === removeOrderItemID);
+
+  // Decrement quantity if > 1
+  if (itemToRemove.quantity > 1) {
+    itemToRemove.quantity = itemToRemove.quantity -1;
+  } else {
+    orderArray = orderArray.filter(item => item.orderItemID != removeOrderItemID)
   }
 
-  function removeOrderItem(removeOrderItemID) {
-    // Find the clicked menu item by id
-    const itemToRemove = orderArray.find(item => item.orderItemID === removeOrderItemID);
+  // If orderArray is empty clear out the order HTML
+  if (orderArray.length === 0) {
+    document.getElementById("order-items").innerHTML = '';
+    document.getElementById("total-price").innerText = `$0`;
     
-    // Decrement quantity if > 1
-    if (itemToRemove.quantity > 1) {
-      itemToRemove.quantity = itemToRemove.quantity -1;
-    } else {
-      orderArray = orderArray.filter(item => item.orderItemID != removeOrderItemID)
-    }
-    
-    // If orderArray is empty clear out the order HTML
-    if (orderArray.length === 0) {
-      document.getElementById("order-items").innerHTML = '';
-      document.getElementById("total-price").innerText = `$0`;
-      
   } else {
-      renderOrder();
-  }
+    renderOrder();
   }
 }
 
