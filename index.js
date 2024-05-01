@@ -1,41 +1,14 @@
+// IMPORT ----------------------------------------------------------
 import { menuArray } from "./data.js";
 
-document.addEventListener("click", function (e) {
-  if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
-    handleAddItem(e.target.dataset.id);
-  }
-  if (e.target.dataset.remove) {
-    removeOrderItem(e.target.dataset.remove)
-  }
-});
+
+// ELEMENT REFERENCES ----------------------------------------------
+const completeOrderBtn = document.getElementById("complete-order-btn");
+const checkoutModal = document.getElementById("checkout-modal");
+const payBtn = document.getElementById("pay-btn");
 
 
-let orderArray = []
-let total = 0;
-
-function handleAddItem(id) {
-  // Convert menuArray object.id to number
-  const idNumber = parseInt(id, 10);
-
-  // Find the clicked menu item by id
-  const selectedItem = menuArray.find(item => item.id === idNumber);
-
-  // Check if the item is already in orderArray
-  const existingItemIndex = orderArray.findIndex(item => item.id === idNumber);
-
-  if (existingItemIndex !== -1) {
-    // If item is already in orderArray, increment quantity. explanation(https://tinyurl.com/ycxp5vc9)
-    orderArray[existingItemIndex].quantity = (orderArray[existingItemIndex].quantity || 1) + 1;
-  } else {
-    // Else, add the item to orderArray with a new orderItemID
-    const newItem = { ...selectedItem, orderItemID: createOrderItemID(), quantity: 1 };
-    orderArray.push(newItem);
-  }
-
-  renderOrder();
-}
-
-
+// RENDER HTML -----------------------------------------------------
 const menuItems = menuArray
   .map(function (item) {
     return `
@@ -58,25 +31,47 @@ const menuItems = menuArray
 
 document.getElementById("menu").innerHTML = menuItems;
 
-// Kept all the new code at the bottom so it's easy to read; can reorganize later
-// Temporary: the modal can be closed by clicking payBtn
-const completeOrderBtn = document.getElementById("complete-order-btn");
-const checkoutModal = document.getElementById("checkout-modal");
-const payBtn = document.getElementById("pay-btn");
+
+// GLOBAL VARIABLES ------------------------------------------------
+let orderArray = []
+let total = 0;
+
+
+// EVENTS ----------------------------------------------------------
+document.addEventListener("click", function (e) {
+  if (e.target.dataset.id && e.target.classList.contains("add-item-btn")) {
+    handleAddItem(e.target.dataset.id);
+  }
+  if (e.target.dataset.remove) {
+    removeOrderItem(e.target.dataset.remove)
+  }
+});
 
 completeOrderBtn.addEventListener("click", openModal);
-payBtn.addEventListener("click", closeModal);
 
-function openModal() {
-  checkoutModal.classList.remove("hidden");
-}
+payBtn.addEventListener("click", closeModal); // Temporary: the modal can be closed by clicking payBtn
 
-function closeModal() {
-  checkoutModal.classList.add("hidden");
-  document.getElementById("order-items").innerHTML = ``;
-  total = 0;
-  orderArray = [];
-  document.getElementById("total-price").innerText = `$${total}`;
+
+// FUNCTIONS -------------------------------------------------------
+function handleAddItem(id) {
+  // Convert menuArray object.id to number
+  const idNumber = parseInt(id, 10);
+
+  // Find the clicked menu item by id
+  const selectedItem = menuArray.find(item => item.id === idNumber);
+
+  // Check if the item is already in orderArray
+  const existingItemIndex = orderArray.findIndex(item => item.id === idNumber);
+
+  if (existingItemIndex !== -1) {
+    // If item is already in orderArray, increment quantity. explanation(https://tinyurl.com/ycxp5vc9)
+    orderArray[existingItemIndex].quantity = (orderArray[existingItemIndex].quantity || 1) + 1;
+  } else {
+    // Else, add the item to orderArray with a new orderItemID
+    const newItem = { ...selectedItem, orderItemID: createOrderItemID(), quantity: 1 };
+    orderArray.push(newItem);
+  }
+  renderOrder();
 }
 
 //create a unique 'order item id' to be used for removing order items
@@ -117,26 +112,37 @@ function renderOrder() {
                               `
       total = orderPrice;
       document.getElementById("total-price").innerText = `$${total}`;
+}
+
+function removeOrderItem(removeOrderItemID) {
+  // Find the clicked menu item by id
+  const itemToRemove = orderArray.find(item => item.orderItemID === removeOrderItemID);
+
+  // Decrement quantity if > 1
+  if (itemToRemove.quantity > 1) {
+    itemToRemove.quantity = itemToRemove.quantity -1;
+  } else {
+    orderArray = orderArray.filter(item => item.orderItemID != removeOrderItemID)
   }
 
-  function removeOrderItem(removeOrderItemID) {
-    // Find the clicked menu item by id
-    const itemToRemove = orderArray.find(item => item.orderItemID === removeOrderItemID);
+  // If orderArray is empty clear out the order HTML
+  if (orderArray.length === 0) {
+    document.getElementById("order-items").innerHTML = '';
+    document.getElementById("total-price").innerText = `$0`;
     
-    // Decrement quantity if > 1
-    if (itemToRemove.quantity > 1) {
-      itemToRemove.quantity = itemToRemove.quantity -1;
-    } else {
-      orderArray = orderArray.filter(item => item.orderItemID != removeOrderItemID)
-    }
-    
-    // If orderArray is empty clear out the order HTML
-    if (orderArray.length === 0) {
-      document.getElementById("order-items").innerHTML = '';
-      document.getElementById("total-price").innerText = `$0`;
-      
   } else {
-      renderOrder();
+    renderOrder();
   }
-  
-  }
+}
+
+function openModal() {
+  checkoutModal.classList.remove("hidden");
+}
+
+function closeModal() {
+  checkoutModal.classList.add("hidden");
+  document.getElementById("order-items").innerHTML = ``;
+  total = 0;
+  orderArray = [];
+  document.getElementById("total-price").innerText = `$${total}`;
+}
