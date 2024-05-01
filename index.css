@@ -240,11 +240,11 @@ main {
   background-color: var(--clr-accent);
   border: none;
   padding: 1rem 0;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #fff;
   margin: 1rem auto;
   font-weight: 700;
-  font-family: "Verdana", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 #complete-order-btn:hover,
@@ -267,7 +267,6 @@ main {
 
 #checkout-modal input {
   display: block;
-  font-family: "Verdana", sans-serif;
   padding: 15px;
   width: 90%;
   margin: 1.15em auto;
